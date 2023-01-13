@@ -32,6 +32,7 @@ if __name__ == '__main__':
     Category.objects.all().delete()
     Tag.objects.all().delete()
     Comment.objects.all().delete()
+    User.objects.all().delete()
 
     print('create a blog user')
     user = User.objects.create_superuser('admin', 'admin@hellogithub.com', 'admin')
