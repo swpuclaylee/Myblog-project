@@ -4,7 +4,7 @@
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
-          <list size="16">
+          <list size="17">
             <item index="0" class="java.lang.String" itemvalue="zipp" />
             <item index="1" class="java.lang.String" itemvalue="markdown" />
             <item index="2" class="java.lang.String" itemvalue="typing-extensions" />
@@ -21,6 +21,7 @@
             <item index="13" class="java.lang.String" itemvalue="pathlib2" />
             <item index="14" class="java.lang.String" itemvalue="pynacl" />
             <item index="15" class="java.lang.String" itemvalue="bcrypt" />
+            <item index="16" class="java.lang.String" itemvalue="django-pure-pagination" />
           </list>
         </value>
       </option>

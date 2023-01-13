@@ -3,6 +3,7 @@ from .models import Post, Category, Tag
 from django.utils.text import slugify
 from markdown.extensions.toc import TocExtension
 from django.views.generic import ListView, DetailView
+from pure_pagination import PaginationMixin
 
 import markdown
 import re
@@ -10,10 +11,11 @@ import re
 # Create your views here.
 
 
-class IndexView(ListView):
+class IndexView(PaginationMixin, ListView):
     model = Post
     template_name = 'blog/index.html'
     context_object_name = 'post_list'
+    paginate_by = 10
 
 
 class PostDetailView(DetailView):
