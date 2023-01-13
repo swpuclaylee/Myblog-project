@@ -58,7 +58,7 @@ if __name__ == '__main__':
 
     print('create some faked posts published within the past year')
     fake = faker.Faker('zh_CN')
-    for _ in range(30):  # Chinese
+    for _ in range(80):  # Chinese
         tags = Tag.objects.order_by('?')
         tag1 = tags.first()
         tag2 = tags.last()
