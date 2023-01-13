@@ -145,3 +145,8 @@ Control.system-ca-bundle
 
 GitHub.sublime-settings
 
+
+# file
+fabfile.py
+_credentials.py
+
