@@ -10,10 +10,9 @@ import re
 # Create your views here.
 
 
-class IndexView(ListView):
-    model = Post
-    template_name = '/blog/index.html'
-    context_object_name = 'post_list'
+def index(request):
+    post_list = Post.objects.all()
+    return render(request, 'blog/index.html', locals())
 
 
 def detail(request, pk):
