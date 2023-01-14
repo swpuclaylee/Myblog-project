@@ -1,9 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
 from .models import Post, Category, Tag
 from django.utils.text import slugify
 from markdown.extensions.toc import TocExtension
-from django.views.generic import ListView, DetailView
-from pure_pagination import PaginationMixin
+from django.views.generic import ListView, DetailView, FormView
+from pure_pagination import PaginationMixin, Paginator, EmptyPage, PageNotAnInteger
+from django.contrib import messages
+from django.db.models import Q
 
 import markdown
 import re
@@ -61,3 +63,24 @@ class TagView(IndexView):
     def get_queryset(self):
         t = get_object_or_404(Tag, pk=self.kwargs.get('pk'))
         return super().get_queryset().filter(tags=t).order_by('-created_time')
+
+
+def search(request):
+    q = request.GET.get('q')
+    if not q:
+        error_msg = "请输入搜索关键词"
+        messages.add_message(request, messages.ERROR, error_msg, extra_tags='danger')
+        return redirect('blog:index')
+
+    post_list = Post.objects.filter(Q(title__icontains=q) | Q(body__icontains=q))
+
+    try:
+        page = request.GET.get('page', 1)
+    except PageNotAnInteger:
+        page = 1
+    p = Paginator(post_list, 10, request=request)
+    posts = p.page(page)
+    return render(request, 'blog/search.html', {'post_list': posts})
+
+
+
