@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block row%}
+    {% block main %}
+        <h1 class="page-title">联系我</h1>
+            <article class="post">
+                <div class="entry-content clearfix">
+                    <form action="{% url 'contacts:contact' %}" method="post" class="contact-form">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3">
+                                <input type="text" name="name" placeholder="姓名" required>
+                                <input type="email" name="email" placeholder="邮箱" required>
+                                <input type="text" name="subject" placeholder="主题" required>
+                                <textarea name="message" rows="7" placeholder="信息" required></textarea>
+                                <button class="btn-send btn-5 btn-5b ion-ios-paperplane" type="submit" name="submit">提交<span></span></button>
+                            </div>
+                        </div>	<!-- row -->
+                    </form>
+                </div>
+            </article>
+    {% endblock %}
+{% endblock %}

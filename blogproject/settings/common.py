@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'comments.apps.CommentsConfig',
     'pure_pagination',
+    'contacts.apps.ContactsConfig',
 ]
 
 MIDDLEWARE = [
