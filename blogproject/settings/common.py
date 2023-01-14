@@ -120,3 +120,6 @@ PAGINATION_SETTINGS = {
     'MARGIN_PAGES_DISPLAYED': 2, # 分页条开头和结尾显示的页数
     'SHOW_FIRST_PAGE_WHEN_INVALID': True, # 当请求了不存在页，显示第一页
 }
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'blog/static/blog/media')
+MEDIA_URL = 'blog/static/media/'

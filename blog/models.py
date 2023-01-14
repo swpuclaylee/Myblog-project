@@ -67,3 +67,15 @@ class Post(models.Model):
     def increase_views(self):
         self.views += 1
         self.save(update_fields=['views'])
+
+
+class Personal(models.Model):
+    image = models.ImageField(upload_to='image', verbose_name='图片路径', blank=False, null=False, default='')
+    per_info = models.TextField('简介')
+
+    def __str__(self):
+        return self.per_info[:10]
+
+    class Meta:
+        verbose_name = '个人信息'
+        verbose_name_plural = verbose_name

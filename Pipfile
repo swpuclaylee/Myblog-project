@@ -9,6 +9,7 @@ markdown = "*"
 gunicorn = "*"
 faker = "*"
 django-pure-pagination = "*"
+pillow = "*"
 
 [dev-packages]
 fabric = "*"

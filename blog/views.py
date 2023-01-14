@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import Post, Category, Tag
+from .models import Post, Category, Tag, Personal
 from django.utils.text import slugify
 from markdown.extensions.toc import TocExtension
 from django.views.generic import ListView, DetailView, FormView
@@ -67,6 +67,19 @@ class TagView(IndexView):
 
 class ArticleView(IndexView):
     template_name = 'blog/article.html'
+
+
+def abouts(request):
+    personal_list = Personal.objects.all()
+    for p in personal_list:
+        p.per_info = markdown.markdown(p.per_info,
+                                           extensions=[
+                                               'markdown.extensions.extra',
+                                               'markdown.extensions.codehilite',
+                                               'markdown.extensions.toc',
+                                           ])
+        print(p.image)
+    return render(request, 'blog/about.html', locals())
 
 
 def search(request):
