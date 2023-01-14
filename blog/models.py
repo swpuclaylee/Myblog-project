@@ -70,7 +70,7 @@ class Post(models.Model):
 
 
 class Personal(models.Model):
-    image = models.ImageField(upload_to='image', verbose_name='图片路径', blank=False, null=False, default='')
+    image = models.ImageField(upload_to='images', verbose_name='图片路径', blank=False, null=False, default='')
     per_info = models.TextField('简介')
 
     def __str__(self):
