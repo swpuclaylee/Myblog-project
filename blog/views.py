@@ -65,6 +65,10 @@ class TagView(IndexView):
         return super().get_queryset().filter(tags=t).order_by('-created_time')
 
 
+class ArticleView(IndexView):
+    template_name = 'blog/article.html'
+
+
 def search(request):
     q = request.GET.get('q')
     if not q:
