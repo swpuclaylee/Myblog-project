@@ -12,11 +12,11 @@
                         <figure class="img-responsive-center">
                             <img class="img-responsive" src="{% static 'blog/media/' %}{{ personal.image }}" alt="Developer Image">
                         </figure>
-                        <p>{{ personal.per_info | safe}}</p>
+                        <p>{{ personal.body_html | safe }}</p>
                         <div class="height-40px"></div>
                         <h2 class="title text-center">社交</h2>
                         <ul class="social">
-                            <li class="facebook"><a href="#"><span class="ion-social-rss"></span></a></li>
+                            <li class="facebook"><a href="{% url 'rss' %}"><span class="ion-social-rss"></span></a></li>
                             <li class="twitter"><a href="{{ personal.github }}"><span class="ion-social-github"></span></a></li>
                         </ul>
                     </div>

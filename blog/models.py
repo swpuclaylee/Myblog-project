@@ -3,9 +3,28 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
 from django.utils.html import strip_tags
+from django.utils.text import slugify
+from markdown.extensions.toc import TocExtension
+from django.utils.functional import cached_property
 
 import markdown
+import re
 # Create your models here.
+
+
+# markdown解析
+def generate_rich_content(value):
+    md = markdown.Markdown(
+        extensions=[
+            "markdown.extensions.extra",
+            "markdown.extensions.codehilite",
+            TocExtension(slugify=slugify),
+        ]
+    )
+    content = md.convert(value)
+    m = re.search(r'<div class="toc">\s*<ul>(.*)</ul>\s*</div>', md.toc, re.S)
+    toc = m.group(1) if m is not None else ""
+    return {"content": content, "toc": toc}
 
 
 # 文章分类
@@ -68,6 +87,18 @@ class Post(models.Model):
         self.views += 1
         self.save(update_fields=['views'])
 
+    @property
+    def toc(self):
+        return self.rich_content.get("toc", "")
+
+    @property
+    def body_html(self):
+        return self.rich_content.get("content", "")
+
+    @cached_property
+    def rich_content(self):
+        return generate_rich_content(self.body)
+
 
 class Personal(models.Model):
     image = models.ImageField(upload_to='images', verbose_name='图片路径', blank=False, null=False, default='')
@@ -80,3 +111,12 @@ class Personal(models.Model):
     class Meta:
         verbose_name = '个人信息'
         verbose_name_plural = verbose_name
+
+    @property
+    def body_html(self):
+        return self.rich_content.get("content", "")
+
+    @cached_property
+    def rich_content(self):
+        return generate_rich_content(self.per_info)
+

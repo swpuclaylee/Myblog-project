@@ -1,14 +1,9 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Post, Category, Tag, Personal
-from django.utils.text import slugify
-from markdown.extensions.toc import TocExtension
 from pure_pagination import Paginator, PageNotAnInteger
 from django.contrib import messages
 from django.db.models import Q
 from django.conf import settings
-
-import markdown
-import re
 
 # Create your views here.
 
@@ -41,15 +36,6 @@ def index(request):
 # 文章详情页
 def detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    md = markdown.Markdown(extensions=[
-        'markdown.extensions.extra',
-        'markdown.extensions.codehilite',
-        TocExtension(slugify=slugify),
-    ])
-    post.body = md.convert(post.body)
-
-    m = re.search(r'<div class="toc">\s*<ul>(.*)</ul>\s*</div>', md.toc, re.S)
-    post.toc = m.group(1) if m is not None else ''
     post.increase_views()
     site_title = "{}".format(post.title)
     return render(request, 'blog/detail.html', locals())
@@ -94,13 +80,6 @@ def article(request):
 # 关于
 def abouts(request):
     personal_list = Personal.objects.all()
-    for p in personal_list:
-        p.per_info = markdown.markdown(p.per_info,
-                                           extensions=[
-                                               'markdown.extensions.extra',
-                                               'markdown.extensions.codehilite',
-                                               'markdown.extensions.toc',
-                                           ])
     site_title = "关于"
     return render(request, 'blog/about.html', locals())
 
