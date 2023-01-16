@@ -4,6 +4,7 @@ from django.contrib import messages
 # Create your views here.
 
 
+# 联系
 def contact(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -21,4 +22,5 @@ def contact(request):
             messages.add_message(request, messages.ERROR, '发送失败', extra_tags='error')
         else:
             messages.add_message(request, messages.SUCCESS, '发送成功', extra_tags='success')
+    site_title = "联系"
     return render(request, 'contacts/contact.html', locals())

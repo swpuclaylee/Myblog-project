@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block title %}
+    <title>{{ site_title }}_{{ site_name }}</title>
+{% endblock %}
+
 {% block row %}
     {% block main %}
             {% for personal in personal_list %}

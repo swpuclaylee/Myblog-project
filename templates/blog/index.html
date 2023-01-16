@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
+
+{% block title %}
+    <title>{{ site_title }}_{{ site_name }}</title>
+{% endblock %}
+
 {% block main %}
-    {% for post in post_list %}
+    {% for post in posts.object_list %}
         <article class="post post-{{ post.pk }}">
             <header class="entry-header">
                 <h1 class="entry-title">
@@ -26,8 +31,6 @@
         <div class="no-post">暂时还没有发布的文章！</div>
     {% endfor %}
     <div class="pagination">
-        {% if is_paginated %}
-            {{ page_obj.render }}
-        {% endif %}
+        {{ posts.render }}
     </div>
 {% endblock %}

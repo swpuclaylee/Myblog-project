@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
+{% block title %}
+    <title>{{ q }}_{{ site_name }}</title>
+{% endblock %}
 {% block main %}
-    {% for post in post_list.object_list %}
+    {% for post in posts.object_list %}
         <article class="post post-{{ post.pk }}">
             <header class="entry-header">
                 <h1 class="entry-title">
@@ -26,14 +29,7 @@
         <div class="no-post">暂时还没有发布的文章！</div>
     {% endfor %}
 
-    <!-- 简单分页效果
-    <div class="pagination-simple">
-        <a href="#">上一页</a>
-        <span class="current">第 6 页 / 共 11 页</span>
-        <a href="#">下一页</a>
-    </div>
-    -->
     <div class="pagination">
-        {{ post_list.render }}
+        {{ posts.render }}
     </div>
 {% endblock %}

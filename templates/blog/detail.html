@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% load comments_extras %}
+
+{% block title %}
+    <title>{{ site_title }}_{{ site_name }}</title>
+{% endblock %}
+
 {% block main %}
 <article class="post post-{{ post.pk }}">
     <header class="entry-header">
