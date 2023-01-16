@@ -6,6 +6,8 @@ from django.views.generic import ListView, DetailView, FormView
 from pure_pagination import PaginationMixin, Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
 from django.db.models import Q
+from blogproject.settings import common
+from django.conf import settings
 
 import markdown
 import re
@@ -13,10 +15,15 @@ import re
 # Create your views here.
 
 
+def global_settings(request):
+    site_name = settings.SITE_NAME
+    return locals()
+
+
 class IndexView(PaginationMixin, ListView):
     model = Post
     template_name = 'blog/index.html'
-    context_object_name = 'post_list'
+    context_object_name ='post_list'
     paginate_by = 10
 
 
@@ -78,7 +85,6 @@ def abouts(request):
                                                'markdown.extensions.codehilite',
                                                'markdown.extensions.toc',
                                            ])
-        print(p.image)
     return render(request, 'blog/about.html', locals())
 
 

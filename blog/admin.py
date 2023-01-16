@@ -22,3 +22,4 @@ admin.site.register(Post, PostAdmin)
 admin.site.register(Category)
 admin.site.register(Tag)
 admin.site.register(Personal, PersonalAdmin)
+admin.site.index_title = "clay的博客"

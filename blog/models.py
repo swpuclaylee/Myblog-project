@@ -72,6 +72,7 @@ class Post(models.Model):
 class Personal(models.Model):
     image = models.ImageField(upload_to='images', verbose_name='图片路径', blank=False, null=False, default='')
     per_info = models.TextField('简介')
+    github = models.URLField('github', max_length=120, default='')
 
     def __str__(self):
         return self.per_info[:10]
