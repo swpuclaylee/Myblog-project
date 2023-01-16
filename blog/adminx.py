@@ -27,7 +27,7 @@ class CategoryAdmin:
     search_fields = ['name']
     list_filter = ['name']
     list_per_page = 10
-    ordering = ['id']
+    ordering = ['-id']
     model_icon = 'fa fa-bell'
 
 
@@ -36,7 +36,7 @@ class TagAdmin:
     search_fields = ['name']
     list_filter = ['name']
     list_per_page = 10
-    ordering = ['id']
+    ordering = ['-id']
     model_icon = 'fa fa-tag'
 
 
