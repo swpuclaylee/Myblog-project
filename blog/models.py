@@ -6,6 +6,7 @@ from django.utils.html import strip_tags
 from django.utils.text import slugify
 from markdown.extensions.toc import TocExtension
 from django.utils.functional import cached_property
+from ckeditor.fields import RichTextField
 
 import markdown
 import re
@@ -54,7 +55,7 @@ class Tag(models.Model):
 # 文章
 class Post(models.Model):
     title = models.CharField('标题', max_length=70)
-    body = models.TextField('正文')
+    body = RichTextField('正文')
     created_time = models.DateTimeField('创建时间', default=timezone.now)
     modified_time = models.DateTimeField('修改时间')
     excerpt = models.CharField('摘要', max_length=200, blank=True)
@@ -102,7 +103,7 @@ class Post(models.Model):
 
 class Personal(models.Model):
     image = models.ImageField(upload_to='images', verbose_name='图片路径', blank=False, null=False, default='')
-    per_info = models.TextField('简介')
+    per_info = RichTextField('简介')
     github = models.URLField('github', max_length=120, default='')
 
     def __str__(self):

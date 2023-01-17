@@ -1,13 +1,14 @@
 from django.db import models
 from django.utils import timezone
+from ckeditor.fields import RichTextField
 # Create your models here.
 
 
 class Contact(models.Model):
     name = models.CharField('名字', max_length=128)
     email = models.EmailField('邮箱')
-    topic = models.CharField('主题', max_length=50)
-    text = models.TextField('内容')
+    subject = models.CharField('主题', max_length=50)
+    message = RichTextField('信息')
     created_time = models.DateTimeField('评论时间')
 
     def __str__(self):

@@ -11,22 +11,10 @@
                         {% csrf_token %}
                         <div class="row">
                             <div class="col-md-6 col-md-offset-3">
-                                <div class="clo-md-4">
-                                    {{ form.name }}
-                                     {{ form.name.errors }}
-                                </div>
-                                <div class="clo-md-4">
-                                    {{ form.email }}
-                                    {{ form.email.errors }}
-                                </div>
-                                <div class="clo-md-4">
-                                    {{ form.topic }}
-                                    {{ form.topic.errors }}
-                                </div>
-                                <div class="clo-md-12">
-                                    {{ form.text }}
-                                    {{ form.text.errors }}
-                                </div>
+                                <input type="text" name="name" placeholder="姓名" required>
+                                <input type="email" name="email" placeholder="邮箱" required>
+                                <input type="text" name="subject" placeholder="主题" required>
+                                <textarea name="message" rows="7" placeholder="信息" required></textarea>
                                  <center><button class="btn-send btn-5 btn-5b ion-ios-paperplane" type="submit" name="submit">提交<span></span></button></center>
                             </div>
                         </div>	<!-- row -->

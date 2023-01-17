@@ -2,7 +2,6 @@ from blog.models import Post
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
 from django.contrib import messages
-
 from .forms import CommentForm
 
 # Create your views here.

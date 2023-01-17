@@ -8,8 +8,8 @@ import xadmin
 
 
 class ContactAdmin:
-    list_display = ['name', 'email', 'topic', 'created_time']
-    fields = ['name', 'email', 'topic', 'text']
+    list_display = ['name', 'email', 'subject', 'created_time']
+    fields = ['name', 'email', 'subject', 'message']
     search_fields = ['name']
     list_filter = ['name']
     list_per_page = 10

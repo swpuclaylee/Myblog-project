@@ -18,6 +18,7 @@ xlsxwriter = "*"
 future = "*"
 httplib2 = "*"
 django-import-export = "*"
+django-ckeditor = "*"
 
 [dev-packages]
 fabric = "*"
