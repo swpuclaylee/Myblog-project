@@ -26,4 +26,5 @@ urlpatterns = [
     path('', include('contacts.urls')),
     path('all/rss', PostRssFeed(), name='rss'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-] + static(MEDIA_URL, document_root=MEDIA_ROOT)
+] \
+              #+ static(MEDIA_URL, document_root=MEDIA_ROOT)
