@@ -130,9 +130,9 @@ PAGINATION_SETTINGS = {
 }
 
 # 配置 MEDIA_ROOT 作为你上传文件在服务器中的基本路径
-MEDIA_ROOT = os.path.join(BASE_DIR, '/blog/static/blog/media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
 # 配置 MEDIA_URL 作为公用 URL，指向上传文件的基本路径
-MEDIA_URL = '/blog/static/blog/media/'
+MEDIA_URL = '/media/'
 
 CKEDITOR_UPLOAD_PATH = 'cke_uploads/'
 CKEDITOR_IMAGE_BACKEND = 'pillow'
