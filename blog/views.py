@@ -97,4 +97,12 @@ def search(request):
     return render(request, 'blog/search.html', locals())
 
 
+# 404
+def page_not_found(request, exception):
+    return render(request, 'blog/404.html', status=404)
+
+
+# 500
+def page_error(request):
+    return render(request, '5blog/500.html', status=500)
 

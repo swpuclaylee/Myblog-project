@@ -18,6 +18,7 @@ from blog.feeds import PostRssFeed
 from django.conf.urls.static import static
 from .settings.common import MEDIA_URL, MEDIA_ROOT
 import xadmin
+from blog.views import page_not_found, page_error
 
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
@@ -27,3 +28,6 @@ urlpatterns = [
     path('all/rss', PostRssFeed(), name='rss'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ] + static(MEDIA_URL, document_root=MEDIA_ROOT)
+
+handler404 = page_not_found
+handler500 = page_error
