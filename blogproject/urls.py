@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.urls import path, include
 from blog.feeds import PostRssFeed
-
+from django.conf.urls.static import static
+from .settings.common import MEDIA_URL, MEDIA_ROOT
 import xadmin
 
 urlpatterns = [
@@ -23,5 +24,6 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('', include('comments.urls')),
     path('', include('contacts.urls')),
-    path('all/rss', PostRssFeed(), name='rss')
-]
+    path('all/rss', PostRssFeed(), name='rss'),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+] + static(MEDIA_URL, document_root=MEDIA_ROOT)

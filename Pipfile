@@ -18,7 +18,7 @@ xlsxwriter = "*"
 future = "*"
 httplib2 = "*"
 django-import-export = "*"
-django-ckeditor = "*"
+django-ckeditor = "==6.0.0"
 
 [dev-packages]
 fabric = "*"

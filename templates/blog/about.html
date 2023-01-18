@@ -6,11 +6,11 @@
 
 {% block row %}
     {% block main %}
-            {% for personal in personal_list %}
+            {% for personal in   personal_list %}
                 <article class="post">
                     <div class="entry-content clearfix">
                         <figure class="img-responsive-center">
-                            <img class="img-responsive" src="{% static 'blog/media/' %}{{ personal.image }}" alt="Developer Image">
+                            <img class="img-responsive" src="{{ MEDIA_URL }}{{ personal.image }}" alt="Developer Image">
                         </figure>
                         <p>{{ personal.body_html | safe }}</p>
                         <div class="height-40px"></div>

@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'xadmin',
     'crispy_forms',
     'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +62,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'blog.views.global_settings',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -127,8 +129,13 @@ PAGINATION_SETTINGS = {
     'SHOW_FIRST_PAGE_WHEN_INVALID': True, # 当请求了不存在页，显示第一页
 }
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'blog/static/blog/media')
-MEDIA_URL = 'blog/static/media/'
+# 配置 MEDIA_ROOT 作为你上传文件在服务器中的基本路径
+MEDIA_ROOT = os.path.join(BASE_DIR, '/blog/static/blog/media/')
+# 配置 MEDIA_URL 作为公用 URL，指向上传文件的基本路径
+MEDIA_URL = '/blog/static/blog/media/'
+
+CKEDITOR_UPLOAD_PATH = 'cke_uploads/'
+CKEDITOR_IMAGE_BACKEND = 'pillow'
 
 # 网站基本信息
 SITE_NAME = 'clay的博客'
@@ -146,7 +153,7 @@ CKEDITOR_CONFIGS = {
         # 工具栏风格
         'toolbar': 'Custom',
         # 工具栏按钮
-        'toolbar_Custom': [\
+        'toolbar_Custom': [
             # 格式、字体、大小
             ['Format', 'Font', 'FontSize'],
             #居左，居中，居右
@@ -158,13 +165,13 @@ CKEDITOR_CONFIGS = {
             # 字体颜色
             ['TextColor', 'BGColor'],
             # 链接
-            ['Link', 'Unlink'],
+            ['Image', 'Link', 'Unlink'],
             # 列表
             ['NumberedList', 'BulletedList'],
             # 最大化
             ['Maximize']
         ],
         # 加入代码块插件
-        'extraPlugins': ','.join(['codesnippet']),
+        'extraPlugins': ','.join(['codesnippet', 'image2', 'widget', 'lineutils',]),
     }
 }
