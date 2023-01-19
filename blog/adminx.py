@@ -56,7 +56,7 @@ class PostAdmin:
 
 
 class PersonalAdmin(xadmin.views.ModelAdminView):
-    list_display = ['image', 'per_info', 'github']
+    list_display = ['image', 'personal_information', 'github']
     search_fields = ['per_info']
     list_filter = ['per_info']
     list_per_page = 5

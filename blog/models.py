@@ -103,7 +103,7 @@ class Post(models.Model):
 
 class Personal(models.Model):
     image = models.ImageField(upload_to='images', verbose_name='图片路径', blank=False, null=False, default='')
-    per_info = RichTextUploadingField('简介', )
+    per_info = RichTextUploadingField('简介')
     github = models.URLField('github', max_length=120, default='')
 
     def __str__(self):
@@ -120,4 +120,8 @@ class Personal(models.Model):
     @cached_property
     def rich_content(self):
         return generate_rich_content(self.per_info)
+
+    @property
+    def personal_information(self):
+        return strip_tags(self.per_info)
 
