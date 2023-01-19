@@ -43,6 +43,8 @@ def detail(request, pk):
 
 # 归档分类
 def archive(request, year, month):
+    if year < 2000 or year >= 3000 or month < 1 or month > 12:
+        return page_not_found(request)
     post_list = Post.objects.filter(created_time__year=year,
                                     created_time__month=month
                                     ).order_by('-created_time')
@@ -98,7 +100,7 @@ def search(request):
 
 
 # 404
-def page_not_found(request, exception):
+def page_not_found(request, exception=None):
     return render(request, 'blog/404.html', status=404)
 
 
