@@ -123,5 +123,5 @@ class Personal(models.Model):
 
     @property
     def personal_information(self):
-        return strip_tags(self.per_info.replace('&nbsp;', '').replace('&ldquo;', '').replace('&rdquo;;', ''))
+        return strip_tags(self.per_info.replace('&nbsp;', '').replace('&ldquo;', '').replace('&rdquo;', ''))
 
