@@ -11,3 +11,5 @@ SECRET_KEY = 'development-secret-key'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+
+HAYSTACK_CONNECTIONS['default']['URL'] = 'http://127.0.0.1:9200/'

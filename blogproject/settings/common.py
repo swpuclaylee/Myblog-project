@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'ckeditor',
     'ckeditor_uploader',
+    'haystack',
 ]
 
 MIDDLEWARE = [
@@ -178,3 +179,16 @@ CKEDITOR_CONFIGS = {
         'extraPlugins': ','.join(['codesnippet', 'image2', 'widget', 'lineutils',]),
     }
 }
+
+
+# 搜索设置
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'blog.elasticsearch2_ik_backend.Elasticsearch2IkSearchEngine',
+        'URL': '',
+        'INDEX_NAME': 'mylog_tutorial',
+    },
+}
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+HAYSTACK_CUSTOM_HIGHLIGHTER = 'blog.utils.Highlighter'

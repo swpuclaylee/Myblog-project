@@ -87,16 +87,16 @@ def abouts(request):
 
 
 # 搜索
-def search(request):
-    q = request.GET.get('q')
-    if not q:
-        error_msg = "请输入搜索关键词"
-        messages.add_message(request, messages.ERROR, error_msg, extra_tags='danger')
-        return redirect('blog:index')
-
-    post_list = Post.objects.filter(Q(title__icontains=q) | Q(body__icontains=q))
-    posts = paginator(request, post_list)
-    return render(request, 'blog/search.html', locals())
+# def search(request):
+#     q = request.GET.get('q')
+#     if not q:
+#         error_msg = "请输入搜索关键词"
+#         messages.add_message(request, messages.ERROR, error_msg, extra_tags='danger')
+#         return redirect('blog:index')
+#
+#     post_list = Post.objects.filter(Q(title__icontains=q) | Q(body__icontains=q))
+#     posts = paginator(request, post_list)
+#     return render(request, 'blog/search.html', locals())
 
 
 # 404
