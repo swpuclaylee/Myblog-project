@@ -55,24 +55,18 @@ class PostAdmin:
         obj.save()
 
 
-class PersonalAdmin:
+class PersonalAdmin(xadmin.views.ModelAdminView):
     list_display = ['image', 'per_info', 'github']
     search_fields = ['per_info']
     list_filter = ['per_info']
-    list_per_page = 10
+    list_per_page = 5
     model_icon = 'fa fa-user-circle'
 
+    def has_add_permission(self):
+        return False if self.model.objects.count() > 0 else super().has_add_permission()
 
-# 目前继承xadmin.views.ModelAdminView会报错'Options' object has no attribute 'opts'，还无法解决。
-# class PersonalAdmin(xadmin.views.ModelAdminView):
-#     list_display = ['image', 'per_info', 'github']
-#     search_fields = ['per_info']
-#     list_filter = ['per_info']
-#     list_per_page = 10
-#     model_icon = 'fa fa-user-circle'
-#
-#     def has_add_permission(self):
-#         return False if self.model.objects.count() > 0 else super().has_add_permission()
+    def has_delete_permission(self, request=None, obj=None):
+        return True
 
 
 xadmin.site.register(Personal, PersonalAdmin)
