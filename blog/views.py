@@ -71,5 +71,5 @@ def page_not_found(request, exception=None):
 
 # 500
 def page_error(request):
-    return render(request, '5blog/500.html', status=500)
+    return render(request, 'blog/500.html', status=500)
 
