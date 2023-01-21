@@ -31,7 +31,7 @@ def generate_rich_content(value):
 
 # 文章分类
 class Category(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField('分类', max_length=100)
 
     class Meta:
         verbose_name = '分类'
@@ -43,7 +43,7 @@ class Category(models.Model):
 
 # 文章标签
 class Tag(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField('标签', max_length=100)
 
     class Meta:
         verbose_name = '标签'
