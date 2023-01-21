@@ -4,17 +4,12 @@ from .get_save_cache import get_cached_posts, get_archive_cached_posts, get_cate
 from .models import Post, Personal, Tag
 from django.views.decorators.cache import cache_page
 
-import logging
-
-logger = logging.getLogger(__name__)
-
 
 # 首页
 def index(request):
     post_list = get_cached_posts()
     posts = paginator(request, post_list)
     site_title = "首页"
-    logger.info("this is index")
     return render(request, 'blog/index.html', locals())
 
 
