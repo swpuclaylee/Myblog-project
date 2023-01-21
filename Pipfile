@@ -21,6 +21,8 @@ django-import-export = "*"
 django-ckeditor = "==6.0.0"
 django-haystack = "*"
 elasticsearch = "==2.4.1"
+django-redis = "==4.5.0"
+cryptography = "==3.4.8"
 
 [dev-packages]
 fabric = "*"

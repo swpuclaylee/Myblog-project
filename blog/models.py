@@ -8,6 +8,7 @@ from markdown.extensions.toc import TocExtension
 from django.utils.functional import cached_property
 from ckeditor_uploader.fields import RichTextUploadingField
 
+
 import markdown
 import re
 # Create your models here.
@@ -124,4 +125,3 @@ class Personal(models.Model):
     @property
     def personal_information(self):
         return strip_tags(self.per_info.replace('&nbsp;', '').replace('&ldquo;', '').replace('&rdquo;', ''))
-
