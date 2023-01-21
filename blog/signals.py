@@ -21,7 +21,6 @@ def cache_post_save_handler(sender, instance, *args, **kwargs):
     #cache.delete('tag_cached_posts:%s' % instance.tags.pk)
 
 
-# 文章缓存更新
 @receiver(post_delete, sender=Post)
 def cache_post_delete_handler(sender, instance, *args, **kwargs):
     year = timezone.now().year

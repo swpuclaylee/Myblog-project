@@ -58,6 +58,7 @@ def article(request):
 
 
 # 关于
+@cache_page(24*60*60)
 def abouts(request):
     personal_list = Personal.objects.all()
     site_title = "关于"
