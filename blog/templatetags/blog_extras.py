@@ -4,6 +4,7 @@
 # @FIle: blog_extras
 from django import template
 from django.db.models.aggregates import Count
+from django.db.models.functions import ExtractMonth, ExtractYear
 from ..models import Post, Category, Tag
 from ..get_save_cache import get_cached_posts
 
@@ -20,7 +21,8 @@ def show_recent_posts(context, num=5):
 @register.inclusion_tag('blog/inclusions/_archives.html', takes_context=True)
 def show_archives(context):
     return {
-        'date_list': Post.objects.dates('created_time', 'month', order='DESC'),
+        'date_list': Post.objects.annotate(year=ExtractYear('created_time'), month=ExtractMonth('created_time')) \
+.values('year', 'month').order_by('-year', '-month').annotate(num_posts=Count('id')),
     }
 
 
