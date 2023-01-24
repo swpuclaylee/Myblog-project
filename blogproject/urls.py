@@ -32,5 +32,5 @@ urlpatterns = [
     path('search/', include('haystack.urls')),
 ] + static(MEDIA_URL, document_root=MEDIA_ROOT)
 
-# handler404 = page_not_found
-# handler500 = page_error
+handler404 = page_not_found
+handler500 = page_error
