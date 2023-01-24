@@ -40,7 +40,6 @@ def category(request, pk):
 
 
 # 标签分类，暂时用cache_page
-@cache_page(60*60)
 def tag(request, pk):
     t = get_object_or_404(Tag, pk=pk)
     post_list = Post.objects.filter(tags=t).order_by('-created_time')
@@ -58,7 +57,6 @@ def article(request):
 
 
 # 关于
-@cache_page(24*60*60)
 def abouts(request):
     personal_list = Personal.objects.all()
     site_title = "关于"
