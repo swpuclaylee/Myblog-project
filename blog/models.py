@@ -101,6 +101,10 @@ class Post(models.Model):
     def rich_content(self):
         return generate_rich_content(self.body)
 
+    @property
+    def get_comments_count(self):
+        return self.comment_set.all().count()
+
 
 class Personal(models.Model):
     image = models.ImageField(upload_to='images', verbose_name='图片路径', blank=False, null=False, default='')
