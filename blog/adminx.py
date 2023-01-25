@@ -41,7 +41,7 @@ class TagAdmin:
 
 
 class PostAdmin:
-    list_display = ['title', 'created_time', 'modified_time', 'category', 'author']
+    list_display = ['title', 'created_time', 'modified_time', 'category', 'views']
     fields = ['title', 'body', 'category', 'tags']
     search_fields = ['title']
     list_filter = ['title']
