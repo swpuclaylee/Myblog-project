@@ -172,11 +172,12 @@ CKEDITOR_CONFIGS = {
             ['Image', 'Link', 'Unlink'],
             # 列表
             ['NumberedList', 'BulletedList'],
+            ['CodeSnippet', 'Markdown'],
             # 最大化
             ['Maximize']
         ],
         # 加入代码块插件
-        'extraPlugins': ','.join(['codesnippet', 'image2', 'widget', 'lineutils',]),
+        'extraPlugins': ','.join(['codesnippet', 'markdown', 'image2', 'widget', 'lineutils',]),
     }
 }
 
