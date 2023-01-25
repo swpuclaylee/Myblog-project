@@ -2,7 +2,6 @@ from django.shortcuts import get_object_or_404, render
 from .utils import paginator
 from .get_save_cache import get_cached_posts, get_archive_cached_posts, get_category_cached_posts
 from .models import Post, Personal, Tag
-from django.views.decorators.cache import cache_page
 
 
 # 首页
