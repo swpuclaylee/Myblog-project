@@ -18,7 +18,7 @@ if __name__ == '__main__':
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "blogproject.settings.local")
     django.setup()
 
-    from blog.models import Category, Post, Tag
+    from blog.models import Category, Post, Tag, Personal
     from comments.models import Comment
 
     print('clean database')
@@ -26,5 +26,6 @@ if __name__ == '__main__':
     Category.objects.all().delete()
     Tag.objects.all().delete()
     Comment.objects.all().delete()
+    Personal.objects.all().delete()
 
     print('done!')
