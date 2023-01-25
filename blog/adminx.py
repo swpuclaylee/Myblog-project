@@ -41,7 +41,7 @@ class TagAdmin:
 
 
 class PostAdmin:
-    list_display = ['title', 'created_time', 'modified_time', 'category', 'views', 'get_comments_count']
+    list_display = ['title', 'created_time', 'modified_time', 'category', 'views', 'comments_count']
     fields = ['title', 'body', 'category', 'tags']
     search_fields = ['title']
     list_filter = ['title']
@@ -53,6 +53,10 @@ class PostAdmin:
         obj = self.new_obj
         obj.author = self.request.user
         obj.save()
+
+    def comments_count(self, obj):
+        return obj.comment_set.all().count()
+    comments_count.short_description = '评论数量'
 
 
 class PersonalAdmin(xadmin.views.ModelAdminView):
