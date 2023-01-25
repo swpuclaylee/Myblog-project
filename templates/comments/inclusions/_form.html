@@ -12,16 +12,16 @@
         {{ form.email.errors }}
     </div>
     <div class="col-md-4">
-      <label for="{{ form.url.id_for_label }}">{{ form.url.label }}：</label>
+      <label for="{{ form.url.id_for_label }}">{{ form.url.label }}(选填)：</label>
         {{ form.url }}
         {{ form.url.errors }}
     </div>
     <div class="col-md-12">
       <label for="{{ form.text.id_for_label }}">{{ form.text.label }}：</label>
         {{ form.text }}
-        {{ form.media }}
-        {{ form.body }}
         {{ form.text.errors }}
+{#        {{ form.media }}#}
+{#        {{ form.body }}#}
       <button type="submit" class="comment-btn">发表</button>
     </div>
   </div>    <!-- row -->
