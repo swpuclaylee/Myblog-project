@@ -122,6 +122,3 @@ class Personal(models.Model):
     def rich_content(self):
         return generate_rich_content(self.per_info)
 
-    @property
-    def personal_information(self):
-        return strip_tags(self.per_info.replace('&nbsp;', '').replace('&ldquo;', '').replace('&rdquo;', ''))

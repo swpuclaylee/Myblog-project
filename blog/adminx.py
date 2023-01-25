@@ -4,6 +4,7 @@
 # @FIle: adminx
 from .models import Category, Tag, Personal, Post
 from xadmin import views
+from django.utils.html import strip_tags
 
 import xadmin
 
@@ -60,7 +61,7 @@ class PostAdmin:
 
 
 class PersonalAdmin(xadmin.views.ModelAdminView):
-    list_display = ['image', 'personal_information', 'github']
+    list_display = ['image', 'introduction', 'github']
     search_fields = ['per_info']
     list_filter = ['per_info']
     list_per_page = 5
@@ -71,6 +72,10 @@ class PersonalAdmin(xadmin.views.ModelAdminView):
 
     def has_delete_permission(self, request=None, obj=None):
         return True
+
+    def introduction(self, obj):
+        return strip_tags(obj.per_info.replace('&nbsp;', '').replace('&ldquo;', '').replace('&rdquo;', '')[:20])
+    introduction.short_description = '简介'
 
 
 xadmin.site.register(Personal, PersonalAdmin)
