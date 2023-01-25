@@ -18,7 +18,6 @@ from blog.feeds import PostRssFeed
 from django.conf.urls.static import static, serve
 from .settings.common import MEDIA_URL, MEDIA_ROOT, STATIC_ROOT
 from blog.views import page_not_found, page_error
-from django.views.generic.base import RedirectView
 
 import xadmin
 
@@ -33,7 +32,6 @@ urlpatterns = [
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
     re_path(r'^static/(?P<path>.*)$', serve, {'document_root': STATIC_ROOT}),
     path('search/', include('haystack.urls')),
-    path('^favicon\.ico$', RedirectView.as_view(url=r'media/images/logo.png')),
 ] + static(MEDIA_URL, document_root=MEDIA_ROOT)
 
 handler404 = page_not_found
