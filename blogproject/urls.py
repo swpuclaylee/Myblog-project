@@ -23,7 +23,7 @@ import xadmin
 
 
 urlpatterns = [
-    path('xadmin/', xadmin.site.urls),
+    path('lwzxadmin/', xadmin.site.urls),
     path('', include('blog.urls')),
     path('', include('comments.urls')),
     path('', include('contacts.urls')),
