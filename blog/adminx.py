@@ -45,7 +45,7 @@ class PostAdmin:
     list_display = ['title', 'created_time', 'modified_time', 'category', 'views', 'comments_count']
     fields = ['title', 'body', 'category', 'tags']
     search_fields = ['title']
-    list_filter = ['title']
+    list_filter = ['title', 'category']
     list_per_page = 10
     ordering = ['-created_time']
     model_icon = 'fa fa-bookmark'

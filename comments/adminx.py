@@ -11,7 +11,7 @@ class CommentAdmin:
     list_display = ['name', 'email', 'url', 'post', 'created_time']
     fields = ['name', 'email', 'url', 'text', 'post']
     search_fields = ['name']
-    list_filter = ['name']
+    list_filter = ['name', 'post']
     list_per_page = 10
     ordering = ['-created_time']
     model_icon = 'fa fa-comments'
