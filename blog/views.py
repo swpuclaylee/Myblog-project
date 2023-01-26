@@ -38,6 +38,15 @@ def category(request, pk):
     return render(request, 'blog/index.html', locals())
 
 
+# 分类
+def article_category(request, pk):
+    print(111)
+    post_list, cate = get_category_cached_posts(pk)
+    posts = paginator(request, post_list)
+    site_title = "{}".format(cate)
+    return render(request, 'blog/article.html', locals())
+
+
 # 标签分类，暂时用cache_page
 def tag(request, pk):
     t = get_object_or_404(Tag, pk=pk)
