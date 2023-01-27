@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9307fdf506ff1450158ce7d3cc55aa638d937af699210786cda5e9ec1716bc05"
+            "sha256": "e5ca34db8712f2a8cb3e899518fb2fcc7924d9ba2f9eccabdc2b5c72d0205f10"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -158,6 +158,14 @@
             "index": "pypi",
             "version": "==1.13.0"
         },
+        "django-filter": {
+            "hashes": [
+                "sha256:632a251fa8f1aadb4b8cceff932bb52fe2f826dd7dfe7f3eac40e5c463d6836e",
+                "sha256:f4a6737a30104c98d2e2a5fb93043f36dd7978e0c7ddc92f5998e85433ea5063"
+            ],
+            "index": "pypi",
+            "version": "==21.1"
+        },
         "django-formtools": {
             "hashes": [
                 "sha256:deb932be55b1d9419e37dc4d65dfbfeb8d307b71c8c11fd52f159aba5fc0deed",
@@ -168,10 +176,11 @@
         },
         "django-haystack": {
             "hashes": [
-                "sha256:97e3197aefc225fe405b6f17600a2534bf827cb4d6743130c20bc1a06f7293a4"
+                "sha256:6d05756b95d7d5ec1dbd4668eb999ced1504b47f588e2e54be53b1404c516a82",
+                "sha256:970ebc6362f3f84861209154ec34b57f3e87d2d7922f948df80177f0e2e3ced7"
             ],
             "index": "pypi",
-            "version": "==3.2.1"
+            "version": "==3.1.1"
         },
         "django-import-export": {
             "hashes": [
@@ -210,6 +219,22 @@
             ],
             "index": "pypi",
             "version": "==4.0.2"
+        },
+        "djangorestframework": {
+            "hashes": [
+                "sha256:6d1d59f623a5ad0509fe0d6bfe93cbdfe17b8116ebc8eda86d45f6e16e819aaf",
+                "sha256:f747949a8ddac876e879190df194b925c177cdeb725a099db1460872f7c0a7f2"
+            ],
+            "index": "pypi",
+            "version": "==3.12.4"
+        },
+        "drf-haystack": {
+            "hashes": [
+                "sha256:7c662cf5d5948007bbcdd35cb0a39c3143956086662780aab75cd61a0e7c03b0",
+                "sha256:c8744aed00ffc176834f14dd301536a0572e0dc172e38d2d34ad98a32ce03283"
+            ],
+            "index": "pypi",
+            "version": "==1.8.11"
         },
         "elasticsearch": {
             "hashes": [

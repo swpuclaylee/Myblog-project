@@ -23,6 +23,9 @@ django-haystack = "*"
 elasticsearch = "==2.4.1"
 django-redis = "==4.5.0"
 cryptography = "==3.4.8"
+djangorestframework = "*"
+django-filter = "*"
+drf-haystack = "*"
 
 [dev-packages]
 fabric = "*"

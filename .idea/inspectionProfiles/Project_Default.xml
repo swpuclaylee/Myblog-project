@@ -4,7 +4,7 @@
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
-          <list size="30">
+          <list size="33">
             <item index="0" class="java.lang.String" itemvalue="zipp" />
             <item index="1" class="java.lang.String" itemvalue="markdown" />
             <item index="2" class="java.lang.String" itemvalue="typing-extensions" />
@@ -35,6 +35,9 @@
             <item index="27" class="java.lang.String" itemvalue="packaging" />
             <item index="28" class="java.lang.String" itemvalue="redis" />
             <item index="29" class="java.lang.String" itemvalue="msgpack-python" />
+            <item index="30" class="java.lang.String" itemvalue="django-filter" />
+            <item index="31" class="java.lang.String" itemvalue="djangorestframework" />
+            <item index="32" class="java.lang.String" itemvalue="drf-haystack" />
           </list>
         </value>
       </option>

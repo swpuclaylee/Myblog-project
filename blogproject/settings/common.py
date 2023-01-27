@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'haystack',
+    'rest_framework',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
@@ -297,4 +299,19 @@ LOGGING = {
             "propagate": True,
         },
     },
+}
+
+
+#***************************** restframework api 设置  ****************************
+
+REST_FRAMEWORK = {
+    # 分页
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 8,
+    # 版本管理
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
+    'DEFAULT_VERSION': 'v1',
+    # 限流
+    'DEFAULT_THROTTLE_CLASSES': ['rest_framework.throttling.AnonRateThrottle',],
+    'DEFAULT_THROTTLE_RATES': {'anon': '10/min',},
 }
