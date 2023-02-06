@@ -8,10 +8,10 @@ import xadmin
 
 
 class CommentAdmin:
-    list_display = ['name', 'email', 'url', 'post', 'created_time']
-    fields = ['name', 'email', 'url', 'text', 'post']
-    search_fields = ['name']
-    list_filter = ['name', 'post']
+    list_display = ['name', 'email', 'url', 'post', 'created_time', 'com_mod']
+    fields = ['name', 'email', 'url', 'text', 'post', 'com_mod']
+    search_fields = ['name', 'post__title']
+    list_filter = ['name', 'post__title']
     list_per_page = 10
     ordering = ['-created_time']
     model_icon = 'fa fa-comments'
