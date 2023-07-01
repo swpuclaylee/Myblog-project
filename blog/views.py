@@ -40,7 +40,6 @@ def category(request, pk):
 
 # 分类
 def article_category(request, pk):
-    print(111)
     post_list, cate = get_category_cached_posts(pk)
     posts = paginator(request, post_list)
     site_title = "{}".format(cate)
@@ -72,13 +71,13 @@ def abouts(request):
 
 
 # 404
-# def page_not_found(request, exception=None):
-#     return render(request, 'blog/404.html', status=404)
-#
-#
-# # 500
-# def page_error(request):
-#     return render(request, 'blog/500.html', status=500)
+def page_not_found(request, exception=None):
+    return render(request, 'blog/404.html', status=404)
+
+
+# 500
+def page_error(request):
+    return render(request, 'blog/500.html', status=500)
 
 
 
