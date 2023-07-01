@@ -7,7 +7,7 @@ class Contact(models.Model):
     name = models.CharField('名字', max_length=128)
     email = models.EmailField('邮箱')
     subject = models.CharField('主题', max_length=50)
-    message = models.TextField('信息')
+    message = models.TextField('信息', default="")
     created_time = models.DateTimeField('评论时间')
 
     def __str__(self):
