@@ -12,7 +12,7 @@ SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', '.claylwz.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', '.claylwz.com', '139.9.129.148']
 
 HAYSTACK_CONNECTIONS['default']['URL'] = 'http://101.132.185.146:9200/'
 
