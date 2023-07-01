@@ -72,13 +72,13 @@ def abouts(request):
 
 
 # 404
-def page_not_found(request, exception=None):
-    return render(request, 'blog/404.html', status=404)
-
-
-# 500
-def page_error(request):
-    return render(request, 'blog/500.html', status=500)
+# def page_not_found(request, exception=None):
+#     return render(request, 'blog/404.html', status=404)
+#
+#
+# # 500
+# def page_error(request):
+#     return render(request, 'blog/500.html', status=500)
 
 
 
