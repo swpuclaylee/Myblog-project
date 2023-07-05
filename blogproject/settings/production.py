@@ -14,7 +14,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', '.claylwz.com', '139.9.129.148']
 
-HAYSTACK_CONNECTIONS['default']['URL'] = 'http://101.132.185.146:9200/'
+HAYSTACK_CONNECTIONS['default']['URL'] = 'http://139.9.129.148:9200/'
 
 
 
