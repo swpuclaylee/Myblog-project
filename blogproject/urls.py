@@ -34,7 +34,7 @@ router.register(r'comments', CommentViewSet, basename='comment')
 router.register(r"search", views.PostSearchView, basename="search")
 
 urlpatterns = [
-    path('xadmin/', xadmin.site.urls, name='yunchu'),
+    path('xadmin/', xadmin.site.urls),
     path('', include('blog.urls')),
     path('', include('comments.urls')),
     path('', include('contacts.urls')),
