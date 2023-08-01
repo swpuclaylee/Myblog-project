@@ -103,7 +103,7 @@ class Post(models.Model):
 
 
 class Personal(models.Model):
-    image = models.ImageField(upload_to='images', verbose_name='图片路径', blank=False, null=False, default='')
+    image = models.ImageField(upload_to='images', verbose_name='图片路径', blank=True, null=True, default='')
     per_info = RichTextUploadingField('简介')
     github = models.URLField('github', max_length=120, default='')
 
