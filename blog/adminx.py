@@ -3,11 +3,13 @@
 # @Author: 李月初
 # @FIle: adminx
 from .models import Category, Tag, Personal, Post
-from xadmin import views
+from xadmin import views, site
 from django.utils.html import strip_tags
 
 import xadmin
 
+site.login_view = 'xadmin.views.user_login'  # 确保指向正确的登录视图函数
+site.app_name = 'yunchu'
 
 # 后台主题
 class AdminSettings:
