@@ -9,7 +9,7 @@ from django.utils.html import strip_tags
 import xadmin
 
 site.login_view = 'xadmin.views.user_login'  # 确保指向正确的登录视图函数
-site.blog = 'yunchu'
+site.app_name = 'yunchu_blog'
 
 # 后台主题
 class AdminSettings:
