@@ -80,9 +80,16 @@ class PersonalAdmin(xadmin.views.ModelAdminView):
     introduction.short_description = '简介'
 
 
-xadmin.site.register(Personal, PersonalAdmin)
-xadmin.site.register(Post, PostAdmin)
-xadmin.site.register(Tag, TagAdmin)
-xadmin.site.register(Category, CategoryAdmin)
-xadmin.site.register(views.BaseAdminView, AdminSettings)
-xadmin.site.register(views.CommAdminView, GlobalSettings)
+# xadmin.site.register(Personal, PersonalAdmin)
+# xadmin.site.register(Post, PostAdmin)
+# xadmin.site.register(Tag, TagAdmin)
+# xadmin.site.register(Category, CategoryAdmin)
+# xadmin.site.register(views.BaseAdminView, AdminSettings)
+# xadmin.site.register(views.CommAdminView, GlobalSettings)
+
+site.register(Personal, PersonalAdmin)
+site.register(Post, PostAdmin)
+site.register(Tag, TagAdmin)
+site.register(Category, CategoryAdmin)
+site.register(views.BaseAdminView, AdminSettings)
+site.register(views.CommAdminView, GlobalSettings)
