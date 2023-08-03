@@ -3,13 +3,13 @@
 # @Author: 李月初
 # @FIle: adminx
 from .models import Category, Tag, Personal, Post
-from xadmin import views, site
+from xadmin import views
 from django.utils.html import strip_tags
 
 import xadmin
 
-site.login_view = 'xadmin.views.user_login'  # 确保指向正确的登录视图函数
-site.app_name = 'blog'
+xadmin.site.login_view = 'xadmin.views.user_login'  # 确保指向正确的登录视图函数
+xadmin.site.app_name = 'blog'
 
 # 后台主题
 class AdminSettings:
@@ -80,16 +80,9 @@ class PersonalAdmin(xadmin.views.ModelAdminView):
     introduction.short_description = '简介'
 
 
-# xadmin.site.register(Personal, PersonalAdmin)
-# xadmin.site.register(Post, PostAdmin)
-# xadmin.site.register(Tag, TagAdmin)
-# xadmin.site.register(Category, CategoryAdmin)
-# xadmin.site.register(views.BaseAdminView, AdminSettings)
-# xadmin.site.register(views.CommAdminView, GlobalSettings)
-
-site.register(Personal, PersonalAdmin)
-site.register(Post, PostAdmin)
-site.register(Tag, TagAdmin)
-site.register(Category, CategoryAdmin)
-site.register(views.BaseAdminView, AdminSettings)
-site.register(views.CommAdminView, GlobalSettings)
+xadmin.site.register(Personal, PersonalAdmin)
+xadmin.site.register(Post, PostAdmin)
+xadmin.site.register(Tag, TagAdmin)
+xadmin.site.register(Category, CategoryAdmin)
+xadmin.site.register(views.BaseAdminView, AdminSettings)
+xadmin.site.register(views.CommAdminView, GlobalSettings)
