@@ -293,11 +293,11 @@ LOGGING = {
             "level": "ERROR",
             "propagate": True,  # 向不向更高级别的logger传递
         },
-        "django.security.DisallowedHost": { # 对于不在 ALLOWED_HOSTS 中的请求不发送报错邮件
-            "level": "ERROR",
-            "handlers": ["console", "mail_admins"],
-            "propagate": True,
-        },
+        # "django.security.DisallowedHost": { # 对于不在 ALLOWED_HOSTS 中的请求不发送报错邮件
+        #     "level": "ERROR",
+        #     "handlers": ["console", "mail_admins"],
+        #     "propagate": True,
+        # },
     },
 }
 
