@@ -25,6 +25,7 @@ def comment_rank_posts(context, num=6):
         'comment_rank_post_list': Post.objects.filter(id__in=[post.id for post in posts if post.comment_set.count() > 0]).annotate(comment_count=Count('comment')).order_by('-comment_count')[:num],
     }
 
+
 @register.inclusion_tag('blog/inclusions/_recent_posts.html', takes_context=True)
 def show_recent_posts(context, num=5):
     return {
