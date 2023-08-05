@@ -21,8 +21,9 @@ def read_rank_posts(context, num=6):
 @register.inclusion_tag('blog/inclusions/_comment_rank.html', takes_context=True)
 def comment_rank_posts(context, num=6):
     posts = get_cached_posts()
+    non_zero_comment_posts = [post for post in posts if post.comment_set.count() > 0]
     return {
-        'comment_rank_post_list': posts.annotate(comment_count=Count('comment')).order_by('-comment_count')[:num],
+        'comment_rank_post_list': non_zero_comment_posts.annotate(comment_count=Count('comment')).order_by('-comment_count')[:num],
     }
 
 @register.inclusion_tag('blog/inclusions/_recent_posts.html', takes_context=True)
