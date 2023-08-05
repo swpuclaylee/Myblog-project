@@ -1,0 +1,12 @@
+<div class="widget widget-recent-posts">
+  <h3 class="widget-title">评论排行榜</h3>
+  <ul>
+    {% for post in comment_rank_post_list %}
+      <li>
+        <a href="{{ post.get_absolute_url }}">{{ post.title }}({{ post.comment_count }})</a>
+      </li>
+    {% empty %}
+      暂无文章！
+    {% endfor %}
+  </ul>
+</div>

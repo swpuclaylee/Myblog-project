@@ -11,6 +11,20 @@ from ..get_save_cache import get_cached_posts
 register = template.Library()
 
 
+@register.inclusion_tag('blog/inclusions/_read_rank.html', takes_context=True)
+def read_rank_posts(context, num=6):
+    return {
+        'read_rank_post_list': get_cached_posts().order_by('-views')[:num],
+    }
+
+
+@register.inclusion_tag('blog/inclusions/_comment_rank.html', takes_context=True)
+def comment_rank_posts(context, num=6):
+    posts = get_cached_posts()
+    return {
+        'comment_rank_post_list': posts.annotate(comment_count=Count('comment')).order_by('-comment_count')[:num],
+    }
+
 @register.inclusion_tag('blog/inclusions/_recent_posts.html', takes_context=True)
 def show_recent_posts(context, num=5):
     return {

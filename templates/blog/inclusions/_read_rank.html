@@ -1,0 +1,12 @@
+<div class="widget widget-recent-posts">
+  <h3 class="widget-title">阅读排行榜</h3>
+  <ul>
+    {% for post in read_rank_post_list %}
+      <li>
+        <a href="{{ post.get_absolute_url }}">{{ post.title }}({{ post.views }})</a>
+      </li>
+    {% empty %}
+      暂无文章！
+    {% endfor %}
+  </ul>
+</div>
