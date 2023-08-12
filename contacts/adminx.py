@@ -24,7 +24,7 @@ class LinksAdmin:
     list_filter = ['name']
     list_per_page = 10
     ordering = ['-created_time']
-    model_icon = 'fa fa-envelope'
+    model_icon = 'fa fa-chain'
 
 
 xadmin.site.register(Contact, ContactAdmin)
