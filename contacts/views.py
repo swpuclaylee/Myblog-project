@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Contact
 from django.contrib import messages
+from celery_tasks.task import send_mail_task
 # Create your views here.
 
 
@@ -18,6 +19,7 @@ def contact(request):
                 subject=subject,
                 message=message
             )
+            send_mail_task.delay(name, 0)
         except:
             messages.add_message(request, messages.ERROR, '发送失败', extra_tags='danger')
         else:

@@ -26,6 +26,8 @@ cryptography = "==3.4.8"
 djangorestframework = "*"
 django-filter = "*"
 drf-haystack = "*"
+librabbitmq = "*"
+celery = "*"
 
 [dev-packages]
 fabric = "*"

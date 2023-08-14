@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from .forms import CommentForm
+from celery_tasks.task import send_mail_task
 
 # Create your views here.
 
@@ -16,6 +17,7 @@ def comment(request, post_pk):
         comment.post = post
         comment.save()
         messages.add_message(request, messages.SUCCESS, '评论发表成功, 通过审核后展示！', extra_tags='success')
+        send_mail_task.delay(comment.name, 1)
         return redirect(post)
     context = {
         'post': post,
