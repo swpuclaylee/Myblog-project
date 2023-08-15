@@ -7,6 +7,7 @@ from django.conf import settings
 
 import os
 import sys
+import django
 
 # 将项目根目录添加到 Python 的模块搜索路径中
 back = os.path.dirname
@@ -15,6 +16,7 @@ sys.path.append(BASE_DIR)
 
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'blogproject.settings.production')
+django.setup()
 
 app = Celery('celery_tasks')
 app.config_from_object("celery_tasks.config")
