@@ -16,6 +16,7 @@ sys.path.append(BASE_DIR)
 
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'blogproject.settings.production')
+django.setup()
 
 app = Celery('celery_tasks')
 app.config_from_object("celery_tasks.config")
