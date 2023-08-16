@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Contact
 from django.contrib import messages
 from celery_tasks.task import send_mail_task
+from django.core.mail import send_mail
 # Create your views here.
 
 
@@ -19,7 +20,15 @@ def contact(request):
                 subject=subject,
                 message=message
             )
-            send_mail_task.delay(name, 0)
+            try:
+                send_mail_task.delay(name, 0)
+            except Exception as e:
+                subject = '联系报错'
+                message = f'错误原因：{e}'
+                from_email = '1093591428@qq.com'
+                recipients = ['swlz4751@gmail.com']
+                send_mail(subject, message, from_email, recipients)
+            #send_mail_task.delay(name, 0)
         except:
             messages.add_message(request, messages.ERROR, '发送失败', extra_tags='danger')
         else:
