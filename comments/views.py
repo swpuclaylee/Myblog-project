@@ -20,7 +20,7 @@ def comment(request, post_pk):
         try:
             send_mail_task.delay(comment.name, 1)
         except Exception as e:
-            subject = '联系报错'
+            subject = '评论报错'
             message = f'错误原因：{e}'
             from_email = '1093591428@qq.com'
             recipients = ['swlz4751@gmail.com']
