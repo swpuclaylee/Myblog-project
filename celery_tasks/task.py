@@ -9,11 +9,11 @@ from django.core.mail import send_mail
 @app.task
 def send_mail_task(name, flag):
     if flag:
-        subject = '你有一条评论'.encode('utf-8')
-        message = f'你收到了一条来自{name}的评论'.encode('utf-8')
+        subject = u"你有一条评论".encode('utf-8')
+        message = u"你收到了一条来自{}的评论".format(name).encode('utf-8')
     else:
-        subject = '有人联系你了！'.encode('utf-8')
-        message = f'你收到了一条来自{name}的联系'.encode('utf-8')
+        subject = u'有人联系你了！'.encode('utf-8')
+        message = u'你收到了一条来自{}的联系'.format(name).encode('utf-8')
     from_email = '1093591428@qq.com'
     recipients = ['swlz4751@gmail.com']
     send_mail(subject, message, from_email, recipients)
