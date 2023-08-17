@@ -10,14 +10,14 @@ import json
 
 @app.task
 def send_mail_task(name, flag):
-    #name = json.loads(name)
-    name = name.decode('utf-8')
-    if flag:
-        subject = "you have a comment".encode('utf-8')
-        message = "you received a comment from{}".format(name).encode('utf-8')
+    name = json.loads(name)
+    name = str(name)
+    if flag == "1":
+        subject = "you have a comment"
+        message = "you received a comment from{}".format(name)
     else:
-        subject = 'someone to contact'.encode('utf-8')
-        message = 'you received a contact from{}'.format(name).encode('utf-8')
+        subject = 'someone to contact'
+        message = 'you received a contact from{}'.format(name)
     from_email = '1093591428@qq.com'
     recipients = ['swlz4751@gmail.com']
     send_mail(subject, message, from_email, recipients)

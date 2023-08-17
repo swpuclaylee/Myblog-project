@@ -4,7 +4,6 @@ from django.contrib import messages
 from celery_tasks.task import send_mail_task
 from django.core.mail import send_mail
 
-import codecs
 import json
 # Create your views here.
 
@@ -24,10 +23,9 @@ def contact(request):
                 message=message
             )
             try:
-                #name = json.dumps(name, ensure_ascii=False)
-                name = name.encode('utf-8')
-                #name = codecs.encode(name, 'ascii').decode('ascii')
-                send_mail_task.delay(name, 0)
+                flag = "0"
+                name = json.dumps(name)
+                send_mail_task.delay(name, flag)
             except Exception as e:
                 subject = '联系报错'
                 message = f'错误原因：{e}'

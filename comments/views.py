@@ -6,7 +6,6 @@ from .forms import CommentForm
 from celery_tasks.task import send_mail_task
 from django.core.mail import send_mail
 
-import codecs
 import json
 # Create your views here.
 
@@ -21,10 +20,9 @@ def comment(request, post_pk):
         comment.save()
         messages.add_message(request, messages.SUCCESS, '评论发表成功, 通过审核后展示！', extra_tags='success')
         try:
-            #name = json.dumps(comment.name, ensure_ascii=False)
-            name = comment.name.encode('utf-8')
-            #name = codecs.encode(comment.name, 'ascii').decode('ascii')
-            send_mail_task.delay(name, 1)
+            name = json.dumps(comment.name)
+            flag = "1"
+            send_mail_task.delay(name, flag)
         except Exception as e:
             subject = '评论报错'
             message = f'错误原因：{e}'
