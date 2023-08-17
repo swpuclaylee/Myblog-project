@@ -11,13 +11,13 @@ import json
 @app.task
 def send_mail_task(name, flag):
     name = json.loads(name)
-    #name = name.encode('utf-8').decode('unicode_escape')
+    d_name = name.encode('utf-8').decode('unicode_escape')
     if flag:
-        subject = u"you have a comment"
-        message = u"you received a comment from{}".format(name)
+        subject = "you have a comment"
+        message = f"you received a comment from{d_name}"
     else:
-        subject = u'someone to contact'
-        message = u'you received a contact from{}'.format(name)
+        subject = 'someone to contact'
+        message = f'you received a contact from{d_name}'
     from_email = '1093591428@qq.com'
     recipients = ['swlz4751@gmail.com']
     send_mail(subject, message, from_email, recipients)
