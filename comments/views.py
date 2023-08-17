@@ -20,7 +20,8 @@ def comment(request, post_pk):
         comment.save()
         messages.add_message(request, messages.SUCCESS, '评论发表成功, 通过审核后展示！', extra_tags='success')
         try:
-            name = codecs.encode(comment.name, 'ascii').decode('ascii')
+            name = comment.name.encode('utf-8')
+            #name = codecs.encode(comment.name, 'ascii').decode('ascii')
             send_mail_task.delay(name, 1)
         except Exception as e:
             subject = '评论报错'

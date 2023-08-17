@@ -22,7 +22,8 @@ def contact(request):
                 message=message
             )
             try:
-                name = codecs.encode(name, 'ascii').decode('ascii')
+                name = name.encode('utf-8')
+                #name = codecs.encode(name, 'ascii').decode('ascii')
                 send_mail_task.delay(name, 0)
             except Exception as e:
                 subject = '联系报错'
