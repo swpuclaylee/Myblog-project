@@ -10,7 +10,8 @@ import json
 
 @app.task
 def send_mail_task(name, flag):
-    name = json.loads(name)
+    #name = json.loads(name)
+    name = name.decode('utf-8')
     if flag:
         subject = "you have a comment".encode('utf-8')
         message = "you received a comment from{}".format(name).encode('utf-8')
