@@ -6,6 +6,6 @@
 CELERY_BROKER_URL = 'amqp://guest@localhost//'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 CELERY_ACCEPT_CONTENT = ['pickle']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'pickle'
+CELERY_RESULT_SERIALIZER = 'pickle'
 CELERY_TIMEZONE = 'Asia/Shanghai'
