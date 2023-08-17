@@ -4,7 +4,7 @@ from django.contrib import messages
 from celery_tasks.task import send_mail_task
 from django.core.mail import send_mail
 
-import pickle
+import json
 # Create your views here.
 
 
@@ -24,7 +24,7 @@ def contact(request):
             )
             try:
                 flag = 0
-                name = pickle.dumps(name)
+                name = json.dumps(name)
                 send_mail_task.delay(name, flag)
             except Exception as e:
                 subject = '联系报错'
