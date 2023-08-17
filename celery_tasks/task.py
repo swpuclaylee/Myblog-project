@@ -5,9 +5,12 @@
 from celery_tasks.celery import app
 from django.core.mail import send_mail
 
+import json
+
 
 @app.task
 def send_mail_task(name, flag):
+    name = json.loads(name)
     if flag:
         subject = "you have a comment".encode('utf-8')
         message = "you received a comment from{}".format(name).encode('utf-8')
