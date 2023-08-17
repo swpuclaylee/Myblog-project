@@ -21,7 +21,7 @@ def comment(request, post_pk):
         messages.add_message(request, messages.SUCCESS, '评论发表成功, 通过审核后展示！', extra_tags='success')
         try:
             name = json.dumps(comment.name)
-            flag = "1"
+            flag = 1
             send_mail_task.delay(name, flag)
         except Exception as e:
             subject = '评论报错'

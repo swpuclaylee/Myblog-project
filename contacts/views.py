@@ -23,7 +23,7 @@ def contact(request):
                 message=message
             )
             try:
-                flag = "0"
+                flag = 0
                 name = json.dumps(name)
                 send_mail_task.delay(name, flag)
             except Exception as e:
