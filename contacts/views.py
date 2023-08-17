@@ -3,6 +3,7 @@ from .models import Contact
 from django.contrib import messages
 from celery_tasks.task import send_mail_task
 from django.core.mail import send_mail
+import codecs
 # Create your views here.
 
 
@@ -21,6 +22,7 @@ def contact(request):
                 message=message
             )
             try:
+                name = codecs.encode(name, 'ascii', 'ignore').decode('ascii')
                 send_mail_task.delay(name, 0)
             except Exception as e:
                 subject = '联系报错'
