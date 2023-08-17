@@ -6,7 +6,7 @@ from .forms import CommentForm
 from celery_tasks.task import send_mail_task
 from django.core.mail import send_mail
 
-import json
+import pickle
 # Create your views here.
 
 
@@ -20,7 +20,7 @@ def comment(request, post_pk):
         comment.save()
         messages.add_message(request, messages.SUCCESS, '评论发表成功, 通过审核后展示！', extra_tags='success')
         try:
-            name = json.dumps(comment.name)
+            name = pickle.dumps(comment.name)
             flag = 1
             send_mail_task.delay(name, flag)
         except Exception as e:

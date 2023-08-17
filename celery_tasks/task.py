@@ -5,12 +5,12 @@
 from celery_tasks.celery import app
 from django.core.mail import send_mail
 
-import json
+import pickle
 
 
 @app.task
 def send_mail_task(name, flag):
-    name = json.loads(name)
+    name = pickle.loads(name)
     d_name = name.encode('utf-8').decode('unicode_escape')
     if flag:
         subject = "you have a comment"
