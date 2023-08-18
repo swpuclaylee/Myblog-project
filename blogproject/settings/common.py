@@ -259,11 +259,11 @@ LOGGING = {
     "filters": {"require_debug_false": {"()": "django.utils.log.RequireDebugFalse"}},
     "formatters": { # 定义了两种日志格式
         "verbose": {  # 标准
-            "format": "%(levelname)s %(asctime)s %(module)s "
+            "format": "%(name)s %(levelname)s %(asctime)s %(module)s "
                       "%(process)d %(thread)d %(message)s"
         },
         'simple': {  # 简单
-            'format': '[%(levelname)s][%(asctime)s][%(filename)s:%(lineno)d]%(message)s'
+            'format': '[%(name)s][%(levelname)s][%(asctime)s][%(filename)s:%(lineno)d]%(message)s'
         },
     },
     "handlers": { # 定义了三种日志处理方式
@@ -305,11 +305,6 @@ LOGGING = {
             'propagate': True,
         },
         'contacts': {
-            'handlers': ['file'],  # 添加 'error_file' handler，记录 ERROR 级别的日志
-            'level': 'INFO',  # 设置为 'INFO'，记录 INFO 级别及以上的日志
-            'propagate': True,
-        },
-        'celery': {
             'handlers': ['file'],  # 添加 'error_file' handler，记录 ERROR 级别的日志
             'level': 'INFO',  # 设置为 'INFO'，记录 INFO 级别及以上的日志
             'propagate': True,
