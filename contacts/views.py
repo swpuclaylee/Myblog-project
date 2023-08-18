@@ -2,10 +2,12 @@ from django.shortcuts import render
 from .models import Contact
 from django.contrib import messages
 from celery_tasks.task import send_mail_task
-from django.core.mail import send_mail
 
 import json
+import logging
 # Create your views here.
+
+logger = logging.getLogger("contacts")
 
 
 # 联系
@@ -22,19 +24,15 @@ def contact(request):
                 subject=subject,
                 message=message
             )
+            flag = 0
+            name = json.dumps(name)
             try:
-                flag = 0
-                name = json.dumps(name)
                 send_mail_task.delay(name, flag)
             except Exception as e:
-                subject = '联系报错'
-                message = f'错误原因：{e}'
-                from_email = '1093591428@qq.com'
-                recipients = ['swlz4751@gmail.com']
-                send_mail(subject, message, from_email, recipients)
-            #send_mail_task.delay(name, 0)
-        except:
+                logger.error("transfer send_mail_task failed in contacts. reason: %s", e)
+        except Exception as e:
             messages.add_message(request, messages.ERROR, '发送失败', extra_tags='danger')
+            logger.error("contact failed. reason: %s", e)
         else:
             messages.add_message(request, messages.SUCCESS, '发送成功', extra_tags='success')
     site_title = "联系"

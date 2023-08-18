@@ -3,7 +3,6 @@
 # @Author: 李月初
 # @FIle: celery.py
 from celery import Celery
-from django.conf import settings
 
 import os
 import sys

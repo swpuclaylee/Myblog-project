@@ -243,7 +243,7 @@ CACHES = {
 # DJANGO日志设置
 # 给ADMINS发送邮件需要配置
 ADMINS = (
- ('admin', '1093591428@qq.com'),
+ ('clay0087lwz', '1093591428@qq.com'),
 )
 MANAGERS = ADMINS
 
@@ -252,17 +252,17 @@ LOG_DIR = os.path.join(BASE_DIR, "logs")
 if not os.path.exists(LOG_DIR):
     os.mkdir(LOG_DIR)
 
-# 基本配置
+# # 基本配置
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False, # 禁用已经存在的logger实例
     "filters": {"require_debug_false": {"()": "django.utils.log.RequireDebugFalse"}},
     "formatters": { # 定义了两种日志格式
-        "verbose": { # 详细
+        "verbose": {  # 标准
             "format": "%(levelname)s %(asctime)s %(module)s "
-            "%(process)d %(thread)d %(message)s"
+                      "%(process)d %(thread)d %(message)s"
         },
-        'simple': { # 简单
+        'simple': {  # 简单
             'format': '[%(levelname)s][%(asctime)s][%(filename)s:%(lineno)d]%(message)s'
         },
     },
@@ -275,7 +275,7 @@ LOGGING = {
         'file': { # 对INFO级别以上信息以日志文件形式保存
             'level': "INFO",
             'class': 'logging.handlers.RotatingFileHandler',  # 滚动生成日志，切割
-            'filename': os.path.join(LOG_DIR,'django.log'),  # 日志文件名
+            'filename': os.path.join(LOG_DIR, 'django.log'),  # 日志文件名
             'maxBytes': 1024 * 1024 * 10,  # 单个日志文件最大为10M
             'backupCount': 5,  # 日志备份文件最大数量
             'formatter': 'simple', # 简单格式
@@ -294,6 +294,26 @@ LOGGING = {
             "level": "ERROR",
             "propagate": True,  # 向不向更高级别的logger传递
         },
+        'blog': {
+            'handlers': ['file'],  # 添加 'error_file' handler，记录 ERROR 级别的日志
+            'level': 'INFO',  # 设置为 'INFO'，记录 INFO 级别及以上的日志
+            'propagate': True,
+        },
+        'comments': {
+            'handlers': ['file'],  # 添加 'error_file' handler，记录 ERROR 级别的日志
+            'level': 'INFO',  # 设置为 'INFO'，记录 INFO 级别及以上的日志
+            'propagate': True,
+        },
+        'contacts': {
+            'handlers': ['file'],  # 添加 'error_file' handler，记录 ERROR 级别的日志
+            'level': 'INFO',  # 设置为 'INFO'，记录 INFO 级别及以上的日志
+            'propagate': True,
+        },
+        'celery': {
+            'handlers': ['file'],  # 添加 'error_file' handler，记录 ERROR 级别的日志
+            'level': 'INFO',  # 设置为 'INFO'，记录 INFO 级别及以上的日志
+            'propagate': True,
+        },
         # "django.security.DisallowedHost": { # 对于不在 ALLOWED_HOSTS 中的请求不发送报错邮件
         #     "level": "ERROR",
         #     "handlers": ["console", "mail_admins"],
@@ -301,8 +321,6 @@ LOGGING = {
         # },
     },
 }
-
-
 #***************************** restframework api 设置  ****************************
 
 REST_FRAMEWORK = {

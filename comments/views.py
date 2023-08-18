@@ -7,8 +7,10 @@ from celery_tasks.task import send_mail_task
 from django.core.mail import send_mail
 
 import json
+import logging
 # Create your views here.
 
+logger = logging.getLogger("comments")
 
 @require_POST
 def comment(request, post_pk):
@@ -19,17 +21,12 @@ def comment(request, post_pk):
         comment.post = post
         comment.save()
         messages.add_message(request, messages.SUCCESS, '评论发表成功, 通过审核后展示！', extra_tags='success')
+        name = json.dumps(comment.name)
+        flag = 1
         try:
-            name = json.dumps(comment.name)
-            flag = 1
             send_mail_task.delay(name, flag)
         except Exception as e:
-            subject = '评论报错'
-            message = f'错误原因：{e}'
-            from_email = '1093591428@qq.com'
-            recipients = ['swlz4751@gmail.com']
-            send_mail(subject, message, from_email, recipients)
-        #send_mail_task.delay(comment.name, 1)
+            logger.error('transfer send_mail_task failed in comments. reason: %s', e)
         return redirect(post)
     context = {
         'post': post,

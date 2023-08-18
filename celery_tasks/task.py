@@ -5,13 +5,16 @@
 from celery_tasks.celery import app
 from django.core.mail import send_mail
 
-import pickle
+import json
+import logging
+
+logger = logging.getLogger("celery")
 
 
 @app.task
 def send_mail_task(name, flag):
-    name = pickle.loads(name)
-    #d_name = name.encode('utf-8').decode('unicode_escape')
+    name = json.loads(name)
+    logger.info(f"the name is {name}")
     if flag:
         subject = "you have a comment"
         message = f"you received a comment from{name}"
@@ -20,4 +23,7 @@ def send_mail_task(name, flag):
         message = f'you received a contact from{name}'
     from_email = '1093591428@qq.com'
     recipients = ['swlz4751@gmail.com']
-    send_mail(subject, message, from_email, recipients)
+    try:
+        send_mail(subject, message, from_email, recipients)
+    except Exception as e:
+        logger.error("transfer send_mail failed in celery task. reason: %s", e)
