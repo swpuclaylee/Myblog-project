@@ -16,6 +16,9 @@ def get_cached_posts():
     return post_list
 
 
+def get_cached_site_view():
+    return cache.get("global_view_count")
+
 # 归档文章
 def get_archive_cached_posts(year, month):
     post_list = cache.get('archive_cached_posts:%syear%smonth' % (year, month))

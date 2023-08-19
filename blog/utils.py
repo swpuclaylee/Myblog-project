@@ -6,6 +6,7 @@ from django.utils.html import strip_tags
 from haystack.utils import Highlighter as HaystackHighlighter
 from django.conf import settings
 from pure_pagination import Paginator, PageNotAnInteger
+from blog.get_save_cache import get_cached_site_view
 
 
 # 搜索高亮
@@ -21,6 +22,7 @@ class Highlighter(HaystackHighlighter):
 
 # 全局变量
 def global_settings(request):
+    global_view_count = get_cached_site_view()
     site_name = settings.SITE_NAME
     return locals()
 
