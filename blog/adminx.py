@@ -45,7 +45,14 @@ class SiteViewAdmin:
     list_display = ['site_view_count']
     search_fields = ['site_view_count']
     list_filter = ['site_view_count']
-    model_icon = 'fa fa-tag'
+    readonly_fields = ['site_view_count']
+    model_icon = 'fa fa-anchor'
+
+    def has_add_permission(self):
+        return False
+
+    def has_delete_permission(self, request=None, obj=None):
+        return False
 
 
 class PostAdmin:

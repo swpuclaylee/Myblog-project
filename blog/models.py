@@ -62,7 +62,7 @@ class SiteView(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return self.site_view_count
+        return str(self.site_view_count)
 
 
 
