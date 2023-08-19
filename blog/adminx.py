@@ -54,6 +54,9 @@ class SiteViewAdmin:
     def has_delete_permission(self, request=None, obj=None):
         return False
 
+    def has_change_permission(self, obj=None):
+        return False
+
 
 class PostAdmin:
     list_display = ['title', 'created_time', 'modified_time', 'category', 'views', 'comments_count']
