@@ -118,8 +118,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-# 全站浏览量
-GLOBAL_VIEW_COUNT = 0
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/

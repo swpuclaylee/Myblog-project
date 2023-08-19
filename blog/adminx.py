@@ -2,7 +2,7 @@
 # @Time: 2023-01-17 4:34
 # @Author: 李月初
 # @FIle: adminx
-from .models import Category, Tag, Personal, Post
+from .models import Category, Tag, Personal, Post, SiteView
 from xadmin import views
 from django.utils.html import strip_tags
 
@@ -38,6 +38,13 @@ class TagAdmin:
     list_filter = ['name']
     list_per_page = 10
     ordering = ['-id']
+    model_icon = 'fa fa-tag'
+
+
+class SiteViewAdmin:
+    list_display = ['site_view_count']
+    search_fields = ['site_view_count']
+    list_filter = ['site_view_count']
     model_icon = 'fa fa-tag'
 
 
@@ -84,3 +91,4 @@ xadmin.site.register(Tag, TagAdmin)
 xadmin.site.register(Category, CategoryAdmin)
 xadmin.site.register(views.BaseAdminView, AdminSettings)
 xadmin.site.register(views.CommAdminView, GlobalSettings)
+xadmin.site.register(SiteView, SiteViewAdmin)

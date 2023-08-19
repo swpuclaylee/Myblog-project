@@ -53,6 +53,19 @@ class Tag(models.Model):
         return self.name
 
 
+# 全站浏览量
+class SiteView(models.Model):
+    site_view_count = models.IntegerField('全站浏览量', default=0)
+
+    class Meta:
+        verbose_name = '全站浏览量'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.site_view_count
+
+
+
 # 文章
 class Post(models.Model):
     title = models.CharField('标题', max_length=70)
