@@ -11,11 +11,13 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 import markdown
 import re
+import html2text
 # Create your models here.
 
 
 # markdown解析
 def generate_rich_content(value):
+    value = html2text.html2text(value)
     md = markdown.Markdown(
         extensions=[
             "markdown.extensions.extra",

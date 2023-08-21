@@ -28,6 +28,7 @@ django-filter = "*"
 drf-haystack = "*"
 librabbitmq = "*"
 celery = "*"
+html2text = "*"
 
 [dev-packages]
 fabric = "*"

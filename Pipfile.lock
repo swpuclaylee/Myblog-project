@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f05e11289b4d3d7c4afc3bdb02119eb73c028a4d5ee76bb3feb80e62a3376bcb"
+            "sha256": "58edd33b873bdf09cfa1f77915c16842ba89ce8f48e8c62b8218c8709b174cae"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -337,6 +337,14 @@
             "index": "pypi",
             "version": "==21.2.0"
         },
+        "html2text": {
+            "hashes": [
+                "sha256:c7c629882da0cf377d66f073329ccf34a12ed2adf0169b9285ae4e63ef54c82b",
+                "sha256:e296318e16b059ddb97f7a8a1d6a5c1d7af4544049a01e261731d2d5cc277bbb"
+            ],
+            "index": "pypi",
+            "version": "==2020.1.16"
+        },
         "httplib2": {
             "hashes": [
                 "sha256:14ae0a53c1ba8f3d37e9e27cf37eabb0fb9980f435ba405d546948b009dd64dc",
@@ -350,7 +358,7 @@
                 "sha256:65a9576a5b2d58ca44d133c42a241905cc45e34d2c06fd5ba2bafa221e5d7b5e",
                 "sha256:766abffff765960fcc18003801f7044eb6755ffae4521c8e8ce8e83b9c9b0668"
             ],
-            "markers": "python_version < '3.10'",
+            "markers": "python_version < '3.8'",
             "version": "==4.8.3"
         },
         "kombu": {
