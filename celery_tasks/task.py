@@ -23,7 +23,7 @@ def send_mail_task(name, flag):
         subject = 'someone to contact'
         message = f'you received a contact from{name}'
     from_email = '1093591428@qq.com'
-    recipients = ['swlz4751@gmail.com']
+    recipients = ['yunchu5587@gmail.com']
     try:
         logger.info(message)
         send_mail(subject, message, from_email, recipients)
