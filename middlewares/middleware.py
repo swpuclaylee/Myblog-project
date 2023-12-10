@@ -18,7 +18,7 @@ class GlobalViewCountMiddleware:
             if site_view_obj:
                 GLOBAL_VIEW_COUNT = site_view_obj.site_view_count
             else:
-                GLOBAL_VIEW_COUNT = cache.get('global_view_count', 0)
+                GLOBAL_VIEW_COUNT = int(cache.get('global_view_count', 0))
             cache.set('global_view_count', GLOBAL_VIEW_COUNT + 1)
             if not site_view_obj:
                 SiteView.objects.create(site_view_count=GLOBAL_VIEW_COUNT)
